@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'propio/css/barra_lateral.css' %}">
+    <script src="{% static 'jquery/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'datatables/js/datatables.min.js' %}"></script>
+    <!-- <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" /> -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'datatables/css/datatables.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper">
+        {% include 'menu.html' %}
+
+        <div class="main p-3">
+            <!-- <div class="text-center">
+                <h1>
+                    Sidebar Bootstrap 5
+                </h1>
+            </div> -->
+
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'propio/js/menu.js' %}"></script>
+    <script src="{% static 'propio/js/datatable.js' %}"></script>
+    <script src="{% static 'propio/js/formValidation.js' %}" type="module"></script>
+    <script src="{% static 'propio/js/toast_mensajes.js' %}"></script>
+
+    {% if messages %}
+        {% for message in messages %}
+                <script>
+                    const mensajes = [
+                        {
+                            text: '{{ message }}',
+                            tag: '{{ message.tags }}'
+                        }
+                    ];
+                    mostrarMensajes(mensajes);
+                </script>
+        {% endfor %}
+    {% endif %}
+</body>
+
+</html>
