@@ -32,7 +32,7 @@
                 <td class="text-center">{{ producto.stock }}</td>
                 <td class="text-center">{{ producto.precio_venta }}</td>
                 <td class="text-center">{{ producto.categoria }}</td>
-                <td class="text-center">{{ producto.fecha_agregado }}</td>
+                <td class="text-center">{{ producto.fecha_agregado|date:"d/m/Y" }}</td>
                 <td class="text-center">
                     <div class="btn-group">
                         <a href="{% url 'productos_editar' producto.id %}" class="btn btn-warning me-2 rounded">
