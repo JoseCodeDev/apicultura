@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from ..models import Categoria
-# from ..forms import CategoriasForm
 from ..forms.categorias_form import CategoriasForm
 from django.contrib import messages
 
 
 def mostrar(request):
-    categorias = Categoria.objects.all()
+    categorias = Categoria.objects.filter(activo=True)
     
     return render(request, 'categorias/index.html', {'categorias': categorias})
 
@@ -63,7 +62,8 @@ def eliminar(request, id_categoria: int):
     elif request.method == 'POST':
         try:
             categoria = get_object_or_404(Categoria, pk=id_categoria)
-            categoria.delete()
+            categoria.activo = False
+            categoria.save()
             messages.success(request, 'Categoría eliminada exitosamente')
                         
             return redirect('mostrar_categorias')
