@@ -4,6 +4,7 @@ import datetime
 # Create your models here.
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50)
+    activo = models.BooleanField(default=True, verbose_name="Activo")
 
     class Meta:
         verbose_name = "Categoría de Producto"
@@ -20,6 +21,7 @@ class Producto(models.Model):
     precio_venta = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio de Venta")
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name='Categoría')
     fecha_agregado = models.DateField(default=datetime.date.today, verbose_name="Fecha de Agregado")
+    activo = models.BooleanField(default=True, verbose_name="Activo")
 
     class Meta:
         verbose_name = "Producto"

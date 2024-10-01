@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from ..models import Producto
-# from ..forms import ProductosForm
 from ..forms.productos_form import ProductosForm
 from django.contrib import messages
 
 def mostrar(request):
-    productos = Producto.objects.select_related('categoria').all()
+    productos = Producto.objects.select_related('categoria').filter(activo=True)
     return render(request, 'productos/index.html', {'productos': productos})
 
 
@@ -67,7 +66,8 @@ def eliminar(request, id_producto: int):
     elif request.method == 'POST':
         try:
             producto = get_object_or_404(Producto, pk=id_producto)
-            producto.delete()
+            producto.activo = False
+            producto.save()
             messages.success(request, 'Producto eliminado exitosamente.')
                         
             return redirect('productos_mostrar')
