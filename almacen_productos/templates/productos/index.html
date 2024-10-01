@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %} Productos {% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-header d-flex justify-content-between">
+        <h1 class="mb-2 title">Productos</h1>
+
+        <a href="{% url 'productos_agregar' %}" class="btn btn-success">Agregar producto</a>
+    </div>
+
+    <table class="table table-striped dt-table">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Descripción</th>
+                <th class="text-center">Stock</th>
+                <th class="text-center">Precio de venta</th>
+                <th class="text-center">Categoría</th>
+                <th class="text-center">Fecha agregado</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td class="text-center">{{ producto.id }}</td>
+                <td class="text-center">{{ producto.nombre }}</td>
+                <td class="text-center">{{ producto.descripcion }}</td>
+                <td class="text-center">{{ producto.stock }}</td>
+                <td class="text-center">{{ producto.precio_venta }}</td>
+                <td class="text-center">{{ producto.categoria }}</td>
+                <td class="text-center">{{ producto.fecha_agregado }}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="{% url 'productos_editar' producto.id %}" class="btn btn-warning me-2 rounded">
+                            <i class="fa-solid fa-pen"></i></i>
+                        </a>
+                        <a href="{% url 'productos_eliminar' producto.id %}" class="btn btn-danger rounded" id="btnEliminar">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</div>
+{% endblock %}
