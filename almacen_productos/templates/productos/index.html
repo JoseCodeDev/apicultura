@@ -15,11 +15,11 @@
             <tr>
                 <th class="text-center">Código</th>
                 <th class="text-center">Nombre</th>
-                <th class="text-center">Descripción</th>
-                <th class="text-center">Stock</th>
                 <th class="text-center">Precio de venta</th>
                 <th class="text-center">Categoría</th>
-                <th class="text-center">Fecha agregado</th>
+                <th class="text-center">Stock</th>
+                <th class="text-center">Stock mínimo</th>
+                <th class="text-center">Stock máximo</th>
                 <th class="text-center">Acciones</th>
             </tr>
         </thead>
@@ -28,11 +28,11 @@
             <tr>
                 <td class="text-center">{{ producto.id }}</td>
                 <td class="text-center">{{ producto.nombre }}</td>
-                <td class="text-center">{{ producto.descripcion }}</td>
-                <td class="text-center">{{ producto.stock }}</td>
                 <td class="text-center">{{ producto.precio_venta }}</td>
                 <td class="text-center">{{ producto.categoria }}</td>
-                <td class="text-center">{{ producto.fecha_agregado|date:"d/m/Y" }}</td>
+                <td class="text-center">{{ producto.stock }}</td>
+                <td class="text-center">{{ producto.stock_minimo }}</td>
+                <td class="text-center">{{ producto.stock_maximo }}</td>
                 <td class="text-center">
                     <div class="btn-group">
                         <a href="{% url 'productos_editar' producto.id %}" class="btn btn-warning me-2 rounded">

@@ -15,23 +15,24 @@ document.addEventListener("DOMContentLoaded", () => {
         // Formulario de productos
         if ((e.target.matches("#frmAgregarProducto")) || e.target.matches("#frmEditarProducto")) {
             let nombre = document.getElementById("nombreProducto").value.trim();
-            let descripcion = document.getElementById("descripcionProducto").value.trim();
-            let stock = document.getElementById("stockProducto").value.trim();
             let precioVenta = document.getElementById("precioVentaProducto").value.trim();
             let categoria = document.getElementById("categoriaProducto").value.trim();
+            let stock = document.getElementById("stockProducto").value.trim();
+            let stock_minimo = document.getElementById("stockMinimoProducto").value.trim();
+            let stock_maximo = document.getElementById("stockMaximoProducto").value.trim();
 
             // Expresión regular para validar solo números
             const regex = /^[0-9.]+$/;
             const stockMinimo = 1;
             const precioMinimo = 10;
 
-            if (nombre == "" || descripcion=="" || stock =="" || precioVenta == "" || categoria == "") {
+            if (nombre == "" || stock ==""  || stock_minimo ==""  || stock_maximo =="" || precioVenta == "" || categoria == "") {
                 e.preventDefault();
                 mostrarAlerta("¡Error!", "Debe llenar todos los campos obligatorios", "error");
             }
-            else if (!regex.test(stock)) {
+            else if (!regex.test(stock) || !regex.test(stock_minimo) || !regex.test(stock_maximo)) {
                 e.preventDefault();
-                mostrarAlerta("¡Error!", "El stock debe contener solo números", "error");
+                mostrarAlerta("¡Error!", "Los stocks debe contener solo números", "error");
             }else if (!regex.test(precioVenta)) {
                 e.preventDefault();
                 mostrarAlerta("¡Error!", "El precio de venta debe contener solo números", "error");

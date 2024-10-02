@@ -9,7 +9,7 @@ class MetodosPago(models.Model):
 
 
 class Venta(models.Model):
-    usuario = models.ForeignKey(User, verbose_name="Usuario")
+    usuario = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, verbose_name="Usuario")
     fecha_venta = models.DateField(default=datetime.date.today, verbose_name="Fecha de la venta")
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Subtotal")
     porcentaje_iva = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Porcentaje de IVA")
