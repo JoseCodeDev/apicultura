@@ -1,10 +1,10 @@
 from django import forms
-from ..models import Categoria, Producto
+from ..models import Producto
 
 class ProductosForm(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ['nombre', 'descripcion','stock', 'precio_venta', 'categoria']
+        fields = ['nombre', 'precio_venta', 'categoria', 'stock', 'stock_minimo', 'stock_maximo']
         widgets = {
             'nombre': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
