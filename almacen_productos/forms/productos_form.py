@@ -10,15 +10,6 @@ class ProductosForm(forms.ModelForm):
                 'class': 'form-control mb-4', 
                 'id': 'nombreProducto' 
             }),
-            'descripcion': forms.Textarea(attrs={
-                'class': 'form-control mb-4', 
-                'id': 'descripcionProducto' ,
-                'rows': 5
-            }),
-            'stock': forms.NumberInput(attrs={
-                'class': 'form-control mb-4', 
-                'id': 'stockProducto'
-            }),
             'precio_venta': forms.NumberInput(attrs={
                 'class': 'form-control mb-4', 
                 'id': 'precioVentaProducto'
@@ -27,6 +18,20 @@ class ProductosForm(forms.ModelForm):
                 'class': 'form-control mb-4', 
                 'id': 'categoriaProducto' 
             }),
+            'stock': forms.NumberInput(attrs={
+                'class': 'form-control mb-4', 
+                'id': 'stockProducto'
+            }),
+            'stock_minimo': forms.NumberInput(attrs={
+                'class': 'form-control mb-4', 
+                'id': 'stockMinimoProducto'
+            }),
+            'stock_maximo': forms.NumberInput(attrs={
+                'class': 'form-control mb-4', 
+                'id': 'stockMaximoProducto'
+            }),
+            
+            
         }
     
     def __init__(self, *args, **kwargs):
