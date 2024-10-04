@@ -1,9 +1,21 @@
-import { mostrarAlerta } from "./alertas";
+document.addEventListener("DOMContentLoaded", function () {
+    const mensajesElement = document.getElementById("mensajes");
+
+    if (mensajesElement) {
+        const mensajes = JSON.parse(mensajesElement.getAttribute("data-mensajes"));
+        mostrarMensajes(mensajes);
+    }
+});
 
 function mostrarMensajes(messages) {
     messages.forEach(function (message) {
         if (message.tag === 'error') {
-            mostrarAlerta("¡Error!", message.text, "error");
+            Swal.fire({
+                title: "¡Error!",
+                text: message.text,
+                icon: "error",
+                confirmButtonText: "Aceptar"
+            });
         } else {
             const Toast = Swal.mixin({
                 toast: true,

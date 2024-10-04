@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if messages %}
+        <div id="mensajes" data-mensajes='[
+            {% for message in messages %}
+                {
+                    "text": "{{ message }}",
+                    "tag": "{{ message.tags }}"
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ]'></div>
+    {% endif %}
+</body>
+</html>

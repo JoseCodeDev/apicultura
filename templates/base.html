@@ -22,16 +22,11 @@
         {% include 'menu.html' %}
 
         <div class="main p-3">
-            <!-- <div class="text-center">
-                <h1>
-                    Sidebar Bootstrap 5
-                </h1>
-            </div> -->
-
             {% block content %} {% endblock %}
         </div>
     </div>
 
+    {% include 'alertas.html' %}
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -39,20 +34,6 @@
     <script src="{% static 'propio/js/datatable.js' %}"></script>
     <script src="{% static 'propio/js/formValidation.js' %}" type="module"></script>
     <script src="{% static 'propio/js/toast_mensajes.js' %}"></script>
-
-    {% if messages %}
-        {% for message in messages %}
-                <script>
-                    const mensajes = [
-                        {
-                            text: '{{ message }}',
-                            tag: '{{ message.tags }}'
-                        }
-                    ];
-                    mostrarMensajes(mensajes);
-                </script>
-        {% endfor %}
-    {% endif %}
 </body>
 
 </html>
