@@ -7,5 +7,8 @@ class CategoriasForm(forms.ModelForm):
         model = Categoria
         fields = ['nombre']
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control'})
+            'nombre': forms.TextInput(attrs={
+                'class': 'form-control',
+                'id': 'nombreCategoria' 
+            })
         }
