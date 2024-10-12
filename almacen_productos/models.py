@@ -16,11 +16,10 @@ class Categoria(models.Model):
 
 class Producto(models.Model):
     nombre = models.CharField(max_length=50)
-    precio_venta = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio de Venta")
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name='Categoría')
+    descripcion = models.TextField(default='Sin descripción', verbose_name="Descripción", blank=True)
     stock = models.IntegerField(verbose_name="Stock")
-    stock_minimo = models.IntegerField(verbose_name="Stock mínimo")
-    stock_maximo = models.IntegerField(verbose_name="Stock máximo")
+    precio_venta = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio de venta")
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name='Categoría')
     activo = models.BooleanField(default=True, verbose_name="Activo")
 
     class Meta:
