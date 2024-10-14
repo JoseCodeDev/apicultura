@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Clientes {% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-header d-flex justify-content-between">
+        <h1 class="mb-2 title">Clientes</h1>
+
+        <a href="{% url 'clientes_agregar' %}" class="btn btn-success">Agregar cliente</a>
+    </div>
+
+    <table class="table table-striped dt-table">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Género</th>
+                <th class="text-center">Teléfono </th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Alta</th>
+                <th class="text-center">Última compra</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td class="text-center">{{ cliente.id }}</td>
+                <td class="text-center">{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+                <td class="text-center">{{ cliente.genero }}</td>
+                <td class="text-center">{{ cliente.telefono }}</td>
+                <td class="text-center">{% if cliente.email %} {{ cliente.email }} {% else %} Sin email {% endif %}</td>
+                <td class="text-center">{{ cliente.fecha_registro|date:"d/m/Y" }}</td>
+                <td class="text-center">
+                    {% if cliente.fecha_ultima_compra %} {{ cliente.fecha_ultima_compra|date:"d/m/Y" }} {% else %} Sin fecha {% endif %}
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="{% url 'clientes_editar' cliente.id %}" class="btn btn-warning me-2 rounded">
+                            <i class="fa-solid fa-pen"></i></i>
+                        </a>
+                        <a href="{% url 'clientes_eliminar' cliente.id %}" class="btn btn-danger rounded" id="btnEliminar">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</div>
+{% endblock %}
