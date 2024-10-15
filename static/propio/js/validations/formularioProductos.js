@@ -24,7 +24,7 @@ export function validarFormularioProductos(e) {
     
     if (!regex.numerosConPuntoDecimal.test(precioVenta)) {
         e.preventDefault();
-        mostrarAlertaPredeterminada("¡Error!", "El precio de venta solo puede contener solo números con punto decimal", "error");
+        mostrarAlertaPredeterminada("¡Error!", "El precio de venta solo puede contener números con punto decimal", "error");
         return;
     } 
     
