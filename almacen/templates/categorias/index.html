@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Categorías {% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-header d-flex justify-content-between">
+        <h1 class="mb-2 title">Categorías</h1>
+
+        <a href="{% url 'categorias_agregar' %}" class="btn btn-success">Agregar categoría</a>
+    </div>
+
+    <table class="table table-striped dt-table">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Tipo</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categoria in categorias %}
+            <tr>
+                <td class="text-center">{{ categoria.id }}</td>
+                <td class="text-center">{{ categoria.nombre }}</td>
+                <td class="text-center">{{ categoria.tipo }}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="{% url 'categorias_editar' categoria.id %}" class="btn btn-warning me-2 rounded">
+                            <i class="fa-solid fa-pen"></i></i>
+                        </a>
+                        <a href="{% url 'categorias_eliminar' categoria.id %}" class="btn btn-danger rounded" id="btnEliminar">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

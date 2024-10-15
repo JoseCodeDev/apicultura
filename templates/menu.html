@@ -39,7 +39,7 @@
                 </a>
                 <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
-                        <a href="{% url 'mostrar_categorias' %}" class="sidebar-link">
+                        <a href="{% url 'categorias_mostrar' %}" class="sidebar-link">
                             <i class="fa-solid fa-tag"></i>
                             <span>Categorías</span>
                         </a>
@@ -48,6 +48,12 @@
                         <a href="{% url 'productos_mostrar' %}" class="sidebar-link">
                             <i class="fa-solid fa-box"></i>
                             <span>Productos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{% url 'insumos_mostrar' %}" class="sidebar-link">
+                            <i class="fa-solid fa-box"></i>
+                            <span>Insumos</span>
                         </a>
                     </li>
                 </ul>

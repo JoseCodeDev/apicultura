@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Insumos {% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-header d-flex justify-content-between">
+        <h1 class="mb-2 title">Insumos</h1>
+
+        <a href="{% url 'insumos_agregar' %}" class="btn btn-success">Agregar insumo</a>
+    </div>
+
+    <table class="table table-striped dt-table">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Descripción</th>
+                <th class="text-center">Precio de compra</th>
+                <th class="text-center">Stock</th>
+                <th class="text-center">Categoría</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for insumo in insumos %}
+            <tr>
+                <td class="text-center">{{ insumo.id }}</td>
+                <td class="text-center">{{ insumo.nombre }}</td>
+                <td class="text-center">{{ insumo.descripcion }}</td>
+                <td class="text-center">Compra</td>
+                <td class="text-center">{{ insumo.stock }}</td>
+                <td class="text-center">{{ insumo.categoria.nombre }}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="{% url 'insumos_editar' insumo.id %}" class="btn btn-warning me-2 rounded">
+                            <i class="fa-solid fa-pen"></i></i>
+                        </a>
+                        <a href="{% url 'insumos_eliminar' insumo.id %}" class="btn btn-danger rounded" id="btnEliminar">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</div>
+{% endblock %}
