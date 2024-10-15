@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Puestos {% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-header d-flex justify-content-between">
+        <h1 class="mb-2 title">Puestos</h1>
+
+        <a href="{% url 'puestos_agregar' %}" class="btn btn-success">Agregar puesto</a>
+    </div>
+
+    <table class="table table-striped dt-table">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Descripción</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for puesto in puestos %}
+            <tr>
+                <td class="text-center">{{ puesto.id }}</td>
+                <td class="text-center">{{ puesto.nombre }}</td>
+                <td class="text-center">{{ puesto.descripcion }}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="{% url 'puestos_editar' puesto.id %}" class="btn btn-warning me-2 rounded">
+                            <i class="fa-solid fa-pen"></i></i>
+                        </a>
+                        <a href="{% url 'puestos_eliminar' puesto.id %}" class="btn btn-danger rounded" id="btnEliminar">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</div>
+{% endblock %}

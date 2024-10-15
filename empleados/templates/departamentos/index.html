@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Departamentos {% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-header d-flex justify-content-between">
+        <h1 class="mb-2 title">Departamentos</h1>
+
+        <a href="{% url 'departamentos_agregar' %}" class="btn btn-success">Agregar departamento</a>
+    </div>
+
+    <table class="table table-striped dt-table">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Descripción</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for departamento in departamentos %}
+            <tr>
+                <td class="text-center">{{ departamento.id }}</td>
+                <td class="text-center">{{ departamento.nombre }}</td>
+                <td class="text-center">{{ departamento.descripcion }}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="{% url 'departamentos_editar' departamento.id %}" class="btn btn-warning me-2 rounded">
+                            <i class="fa-solid fa-pen"></i></i>
+                        </a>
+                        <a href="{% url 'departamentos_eliminar' departamento.id %}" class="btn btn-danger rounded" id="btnEliminar">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</div>
+{% endblock %}

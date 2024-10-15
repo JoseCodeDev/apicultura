@@ -59,6 +59,33 @@
                 </ul>
             </li>
             <li class="sidebar-item">
+                <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                    data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Empleados</span>
+                </a>
+                <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a href="{% url 'departamentos_mostrar' %}" class="sidebar-link">
+                            <i class="fa-solid fa-tag"></i>
+                            <span>Departamentos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{% url 'puestos_mostrar' %}" class="sidebar-link">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Puestos</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{% url 'insumos_mostrar' %}" class="sidebar-link">
+                            <i class="fa-solid fa-box"></i>
+                            <span>Insumos</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-item">
                 <a href="#" class="sidebar-link">
                     <i class="fa-solid fa-truck"></i>
                     <span>Proveedores</span>
