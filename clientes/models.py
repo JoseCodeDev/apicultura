@@ -15,6 +15,7 @@ class Cliente(models.Model):
     fecha_registro = models.DateField(auto_now_add=True, verbose_name="Fecha de registro")
     fecha_ultima_compra = models.DateField(verbose_name="Última compra", blank=True, null=True)
     activo = models.BooleanField(default=True)
+    eliminado = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = "Cliente"

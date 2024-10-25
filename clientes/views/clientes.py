@@ -5,8 +5,9 @@ from django.contrib import messages
 
 
 def mostrar(request):
-    clientes = Cliente.objects.filter(activo=True)
+    clientes = Cliente.objects.filter(eliminado=False)
     return render(request, 'clientes/index.html', {'clientes': clientes})
+
 
 def agregar(request):
     if request.method == 'GET':
@@ -28,7 +29,6 @@ def agregar(request):
         except ValueError:
             messages.error(request, 'Ocurrió un error, inténtalo de nuevo más tarde.')
             return render(request, 'clientes/agregar.html', {'form': form})
-
 
 
 def editar(request, id_cliente: int):
@@ -66,7 +66,7 @@ def eliminar(request, id_cliente: int):
     elif request.method == 'POST':
         try:
             cliente = get_object_or_404(Cliente, pk=id_cliente)
-            cliente.activo = False
+            cliente.eliminado = True
             cliente.save()
             messages.success(request, 'Cliente eliminado exitosamente.')
                         

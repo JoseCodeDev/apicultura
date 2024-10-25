@@ -37,4 +37,10 @@ export function validarFormularioClientes(e) {
         mostrarAlertaPredeterminada("¡Error!", "El email ingresado no es válido", "error");
         return;
     }
+
+    if (!regex.soloNumeros.test(telefono)) {
+        e.preventDefault();
+        mostrarAlertaPredeterminada("¡Error!", "El teléfono solo puede contener números", "error");
+        return;
+    } 
 }

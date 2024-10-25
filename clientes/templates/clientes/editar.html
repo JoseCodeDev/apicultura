@@ -10,7 +10,6 @@
         <p class="mt-4 mb-4">Campos obligatorios <span class="text-danger fw-bold">*</span></p> 
     </div>
 
-    {{error}}
     <form action="{% url 'clientes_editar' cliente.id %}" method="post" id="frmEditarCliente">
         {% csrf_token %}
 
