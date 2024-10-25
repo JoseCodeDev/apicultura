@@ -20,6 +20,7 @@
                 <th class="text-center">Email</th>
                 <th class="text-center">Alta</th>
                 <th class="text-center">Última compra</th>
+                <th class="text-center">Activo</th>
                 <th class="text-center">Acciones</th>
             </tr>
         </thead>
@@ -33,14 +34,20 @@
                 <td class="text-center">{% if cliente.email %} {{ cliente.email }} {% else %} Sin email {% endif %}</td>
                 <td class="text-center">{{ cliente.fecha_registro|date:"d/m/Y" }}</td>
                 <td class="text-center">
-                    {% if cliente.fecha_ultima_compra %} {{ cliente.fecha_ultima_compra|date:"d/m/Y" }} {% else %} Sin fecha {% endif %}
+                    {% if cliente.fecha_ultima_compra %} {{ cliente.fecha_ultima_compra|date:"d/m/Y" }} {% else %} Sin
+                    fecha {% endif %}
+                </td>
+                <td class="text-center">
+                    {% if cliente.activo %} <span class="badge rounded-pill bg-success">Activo</span> {% else %} <span
+                        class="badge rounded-pill bg-danger">Inactivo</span> {% endif %}
                 </td>
                 <td class="text-center">
                     <div class="btn-group">
                         <a href="{% url 'clientes_editar' cliente.id %}" class="btn btn-warning me-2 rounded">
                             <i class="fa-solid fa-pen"></i></i>
                         </a>
-                        <a href="{% url 'clientes_eliminar' cliente.id %}" class="btn btn-danger rounded" id="btnEliminar">
+                        <a href="{% url 'clientes_eliminar' cliente.id %}" class="btn btn-danger rounded"
+                            id="btnEliminar">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </div>
@@ -48,6 +55,6 @@
             </tr>
             {% endfor %}
         </tbody>
-    </table>    
+    </table>
 </div>
 {% endblock %}
