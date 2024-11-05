@@ -8,46 +8,54 @@ class EmpleadosForm(forms.ModelForm):
         widgets = {
             'nombres': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'nombresEmpleado' 
+                'id': 'nombresEmpleado',
+                'type': 'text',
             }),
             'apellidos': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'apellidosEmpleado' 
+                'id': 'apellidosEmpleado',
+                'type': 'text',
             }),
             'fecha_nacimiento': forms.DateInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'fechaNacimientoEmpleado' ,
-                'type': 'date'
+                'id': 'fechaNacimientoEmpleado',
+                'type': 'date',
             }),
             'sexo': forms.Select(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'sexoEmpleado' 
+                'id': 'sexoEmpleado',
+                'type': 'select',
             }),
             'direccion': forms.Textarea(attrs={
                 'class': 'form-control mb-4', 
                 'id': 'direccionEmpleado' ,
-                'rows': 5
+                'rows': 5,
+                'type': 'textarea',
             }),
             'telefono': forms.NumberInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'telefonoEmpleado' 
+                'id': 'telefonoEmpleado',
+                'type': 'number',
             }),
             'grupo_sanguineo': forms.Select(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'grupoSanguineoEmpleado' 
+                'id': 'grupoSanguineoEmpleado',
+                'type': 'select',
             }),
             'fecha_contratacion': forms.DateInput(attrs={
                 'class': 'form-control mb-4', 
                 'id': 'fechaContratacionEmpleado',
-                'type': 'date'
+                'type': 'date',
             }),
             'puesto': forms.Select(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'puestoEmpleado' 
+                'id': 'puestoEmpleado',
+                'type': 'select',
             }),
             'departamento': forms.Select(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'departamentoEmpleado' 
+                'id': 'departamentoEmpleado',
+                'type': 'select',
             }),
             'fecha_alta_ss': forms.DateInput(attrs={
                 'class': 'form-control mb-4', 
@@ -56,27 +64,33 @@ class EmpleadosForm(forms.ModelForm):
             }),
             'nss': forms.NumberInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'nssEmpleado' 
+                'id': 'nssEmpleado',
+                'type': 'number',
             }),
             'clabe_interbancaria': forms.NumberInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'clabeInterbancariaEmpleado' 
+                'id': 'clabeInterbancariaEmpleado',
+                'type': 'number',
             }),
             'contacto_emergencia_nombres': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'contactoEmergenciaNombresEmpleado' 
+                'id': 'contactoEmergenciaNombresEmpleado',
+                'type': 'text',
             }),
             'contacto_emergencia_apellidos': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'contactoEmergenciaApellidosEmpleado' 
+                'id': 'contactoEmergenciaApellidosEmpleado',
+                'type': 'text',
             }),
             'contacto_emergencia_telefono': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'contactoEmergenciaTelefonoEmpleado' 
+                'id': 'contactoEmergenciaTelefonoEmpleado',
+                'type': 'number',
             }),
             'contacto_emergencia_parentesco': forms.Select(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'contactoEmergenciaParentescoEmpleado' 
+                'id': 'contactoEmergenciaParentescoEmpleado',
+                'type': 'select',
             }),
             'activo': forms.CheckboxInput(attrs={
                 'class': 'form-check-input', 

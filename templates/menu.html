@@ -9,7 +9,6 @@
     <aside class="expand" id="sidebar">
         <div class="d-flex">
             <button class="toggle-btn" type="button">
-                <!-- <i class="lni lni-grid-alt"></i> -->
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="sidebar-logo">
@@ -19,7 +18,6 @@
         <ul class="sidebar-nav">
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link">
-                    <!-- <i class="lni lni-user"></i> -->
                     <i class="fa-solid fa-house"></i>
                     <span>Inicio</span>
                 </a>
@@ -32,12 +30,11 @@
             </li>
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                    data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                    <!-- <i class="lni lni-protection"></i> -->
+                    data-bs-target="#almacen" aria-expanded="false" aria-controls="almacen">
                     <i class="fa-solid fa-boxes-stacked"></i>
                     <span>Almacen</span>
                 </a>
-                <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="almacen" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
                         <a href="{% url 'categorias_mostrar' %}" class="sidebar-link">
                             <i class="fa-solid fa-tag"></i>
@@ -60,11 +57,11 @@
             </li>
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                    data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                    data-bs-target="#empleados" aria-expanded="false" aria-controls="empleados">
                     <i class="fa-solid fa-user-tie"></i>
                     <span>Empleados</span>
                 </a>
-                <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="empleados" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                     <li class="sidebar-item">
                         <a href="{% url 'departamentos_mostrar' %}" class="sidebar-link">
                             <i class="fa-solid fa-tag"></i>
@@ -87,21 +84,18 @@
             </li>
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link">
-                    <!-- <i class="lni lni-popup"></i> -->
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span>Compras</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link">
-                    <!-- <i class="lni lni-cog"></i> -->
                     <i class="fa-solid fa-money-check-dollar"></i>
                     <span>Ventas</span>
                 </a>
             </li>
             <li class="sidebar-item"></li>
             <a href="#" class="sidebar-link">
-                <!-- <i class="lni lni-cog"></i> -->
                 <i class="fa-solid fa-chart-simple"></i>
                 <span>Reportes</span>
             </a>

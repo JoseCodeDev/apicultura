@@ -4,4 +4,6 @@ export const regex = {
     letrasConEspacios: /^[a-zA-ZñáéíóúÑÁÉÍÓÚ\s]+$/,
     genero: /^[MF]$/,
     email: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,7}$/,
+    telefono10Digitos: /^\d{10}$/,
+    grupoSanguineo: /^(A|B|AB|O)([+-])$/,
 };

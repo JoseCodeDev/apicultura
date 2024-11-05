@@ -62,6 +62,7 @@ def eliminar(request, id_empleado: int):
         try:
             empleado = get_object_or_404(Empleado, pk=id_empleado)
             empleado.activo = False
+            empleado.eliminado = True
             empleado.save()
             messages.success(request, 'empleado eliminado exitosamente.')
                         

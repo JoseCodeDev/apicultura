@@ -9,3 +9,6 @@ class Puesto(models.Model):
     class Meta:
         verbose_name = "Puesto"
         verbose_name_plural = "Puestos"
+    
+    def __str__(self):
+        return self.nombre

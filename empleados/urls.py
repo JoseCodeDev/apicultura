@@ -4,8 +4,8 @@ from empleados.views import departamentos, puestos, empleados
 urlpatterns = [
     path('', empleados.mostrar, name='empleados_mostrar'),
     path('agregar', empleados.agregar, name='empleados_agregar'),
-    path('editar/<int:id_cliente>', empleados.editar, name='empleados_editar'),
-    path('eliminar/<int:id_cliente>', empleados.eliminar, name='empleados_eliminar'),
+    path('editar/<int:id_empleado>', empleados.editar, name='empleados_editar'),
+    path('eliminar/<int:id_empleado>', empleados.eliminar, name='empleados_eliminar'),
     
     path('departamentos/', departamentos.mostrar, name='departamentos_mostrar'),
     path('departamentos/agregar', departamentos.agregar, name='departamentos_agregar'),
