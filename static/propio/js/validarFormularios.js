@@ -4,6 +4,7 @@ import { validarFormularioClientes } from './validations/formularioClientes.js';
 import { validarFormularioInsumos } from './validations/formularioInsumos.js';
 import { validarFormularioPuestos } from './validations/formularioPuestos.js';
 import { validarFormularioDepartamentos } from './validations/formularioDepartamentos.js';
+import { validarFormularioEmpleados } from './validations/formularioEmpleados.js';
 
 export function validarFormularios(e) {
     if ((e.target.matches("#frmAgregarCategoria")) || e.target.matches("#frmEditarCategoria")) {
@@ -33,6 +34,11 @@ export function validarFormularios(e) {
 
     if ((e.target.matches("#frmAgregarDepartamento")) || e.target.matches("#frmEditarDepartamento")) {
         validarFormularioDepartamentos(e);
+        return;
+    }
+
+    if ((e.target.matches("#frmAgregarEmpleado")) || e.target.matches("#frmEditarEmpleado")) {
+        validarFormularioEmpleados(e);
         return;
     }
 }
