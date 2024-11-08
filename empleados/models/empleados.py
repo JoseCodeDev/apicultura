@@ -1,6 +1,7 @@
 from django.db import models
 from .puestos import Puesto
 from .departamentos import Departamento
+from django.contrib.auth.models import User
 
 
 class Empleado(models.Model):
@@ -33,6 +34,7 @@ class Empleado(models.Model):
     apellidos = models.CharField(max_length=50)
     fecha_nacimiento = models.DateField()
     sexo = models.CharField(max_length=1, choices=OPCIONES_SEXO)
+    user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
     direccion = models.TextField(verbose_name='Dirección')
     telefono = models.CharField(max_length=10, verbose_name='Teléfono')
     grupo_sanguineo = models.CharField(max_length=3, choices=GRUPOS_SANGUINEOS, verbose_name='Grupo sanguíneo')

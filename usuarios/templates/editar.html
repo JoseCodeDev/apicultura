@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Editar usuario {% endblock %}
+
+{% block content %}
+<div class="main-content"></div>
+    <div class="main-header">
+        <h1 class="mb-2 title">Editar usuario</h1>
+
+        <p class="mt-4 mb-4">Campos obligatorios <span class="text-danger fw-bold">*</span></p> 
+    </div>
+
+    {{error}}
+    <form action="{% url 'usuarios_editar' usuario.id %}" method="post" id="frmEditarUsuario">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                <label class="fw-bold" for="{{ field.id_for_label }}">
+                    {{ field.label }}{% if field.field.required %} <span class="text-danger">*</span>{% endif %}
+                </label>
+                {{ field }}
+            </div>
+
+            {# Coloca el enlace de cambio de contraseña después del campo 'email' #}
+            {% if field.name == 'email' %}
+                <div class="form-group">
+                    <p>
+                        <span class="fw-bold">Contraseña:</span> Las contraseñas no se pueden ver por razones de seguridad, 
+                        pero puedes <a href="{% url 'usuarios_cambiar_contrasenia' usuario.id %}" class="text-primary">cambiar la contraseña</a>.
+                    </p>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+
+        <div class="mt-5">
+            <button class="btn btn-success" type="submit">Editar usuario</button>
+            <a href="{% url 'usuarios_mostrar' %}" class="btn btn-danger">Volver</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
