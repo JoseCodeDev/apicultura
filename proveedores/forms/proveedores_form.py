@@ -1,10 +1,10 @@
 from django import forms
-from ..models.proveedores import Provedor
+from ..models.proveedores import Proveedor
 
 class ProveedoresForm(forms.ModelForm):
     class Meta:
-        model = Provedor
-        fields = ['nombre_empresa', 'rfc', 'direccion_fiscal', 'direccion_envio', 'tipo_persona', 'contacto_nombres', 'contacto_apellidos', 'contacto_sexo', 'contacto_telefono', 'contacto_email', 'activo',]
+        model = Proveedor
+        fields = ['nombre_empresa', 'rfc', 'direccion', 'telefono_empresa', 'email_empresa', 'tipo_persona', 'banco', 'numero_cuenta', 'representante_nombres', 'representante_apellidos', 'representante_sexo', 'representante_telefono', 'representante_email', 'activo',]
         widgets = {
             'nombre_empresa': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
@@ -18,17 +18,23 @@ class ProveedoresForm(forms.ModelForm):
                 'type': 'text',
                 'maxlength': 13,
             }),
-            'direccion_fiscal': forms.Textarea(attrs={
+            'direccion': forms.Textarea(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'direccionFiscalEmpresaProveedor',
+                'id': 'direccionEmpresaProveedor',
                 'rows': 5,
                 'type': 'textarea',
             }),
-            'direccion_envio': forms.Textarea(attrs={
+            'telefono_empresa': forms.NumberInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'direccionEnviolEmpresaProveedor',
-                'rows': 5,
-                'type': 'textarea',
+                'id': 'telefonoEmpresaProveedor',
+                'type': 'number',
+                'maxlength': 12,
+            }),
+            'email_empresa': forms.EmailInput(attrs={
+                'class': 'form-control mb-4', 
+                'id': 'emailEmpresaProveedor',
+                'type': 'email',
+                'maxlength': 50,
             }),
             'tipo_persona': forms.Select(attrs={
                 'class': 'form-control mb-4', 
@@ -36,33 +42,45 @@ class ProveedoresForm(forms.ModelForm):
                 'type': 'select',
                 'maxlength': 6,
             }),
-            'contacto_nombres': forms.TextInput(attrs={
+            'banco': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'contactoNombresProveedor',
+                'id': 'bancoEmpresaProveedor' ,
+                'type': 'text',
+                'maxlength': 100,
+            }),
+            'numero_cuenta': forms.NumberInput(attrs={
+                'class': 'form-control mb-4', 
+                'id': 'numeroCuentaEmpresaProveedor' ,
+                'type': 'number',
+                'maxlength': 18,
+            }),
+            'representante_nombres': forms.TextInput(attrs={
+                'class': 'form-control mb-4', 
+                'id': 'representanteNombresProveedor',
                 'type': 'text',
                 'maxlength': 50,
             }),
-            'contacto_apellidos': forms.TextInput(attrs={
+            'representante_apellidos': forms.TextInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'contactoApellidosProveedor',
+                    'id': 'representanteApellidosProveedor',
                 'type': 'text',
                 'maxlength': 50,
             }),
-            'contacto_sexo': forms.Select(attrs={
+            'representante_sexo': forms.Select(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'sexoContactoProveedor',
+                'id': 'representanteSexoProveedor',
                 'type': 'date',
                 'maxlength': 9,
             }),
-            'contacto_telefono': forms.NumberInput(attrs={
+            'representante_telefono': forms.NumberInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'telefonoContactoProveedor',
+                'id': 'representanteTelefonoProveedor',
                 'type': 'number',
                 'maxlength': 10,
             }),
-            'contacto_email': forms.EmailInput(attrs={
+            'representante_email': forms.EmailInput(attrs={
                 'class': 'form-control mb-4', 
-                'id': 'emailContactoProveedor',
+                'id': 'representanteEmailProveedor',
                 'type': 'email',
                 'maxlength': 50,
             }),

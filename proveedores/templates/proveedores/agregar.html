@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} Agregar proveedor {% endblock %}
+
+{% block content %}
+<div class="main-content"></div>
+    <div class="main-header">
+        <h1 class="mb-2 title">Agregar proveedor</h1>
+
+        <p class="mt-4 mb-4">Campos obligatorios <span class="text-danger fw-bold">*</span></p> 
+    </div>
+
+    <form action="{% url 'proveedores_agregar' %}" method="post" id="frmAgregarProveedor">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                <label class="fw-bold" for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} <span class="text-danger">*</span>{% endif %}</label>
+                {{ field }}
+            </div>
+        {% endfor %}
+
+
+        <div class="mt-5">
+            <button class="btn btn-success" type="submit">Agregar proveedor</button>
+            <a href="{% url 'proveedores_mostrar' %}" class="btn btn-danger">Volver</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
