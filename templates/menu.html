@@ -57,11 +57,17 @@
             </li>
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                    data-bs-target="#empleados" aria-expanded="false" aria-controls="empleados">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <span>Empleados</span>
+                    data-bs-target="#personal" aria-expanded="false" aria-controls="personal">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Personal</span>
                 </a>
-                <ul id="empleados" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="personal" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a href="{% url 'empleados_mostrar' %}" class="sidebar-link">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>Empleados</span>
+                        </a>
+                    </li>
                     <li class="sidebar-item">
                         <a href="{% url 'departamentos_mostrar' %}" class="sidebar-link">
                             <i class="fa-solid fa-tag"></i>
@@ -77,7 +83,7 @@
                 </ul>
             </li>
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
+                <a href="{% url 'proveedores_mostrar' %}" class="sidebar-link">
                     <i class="fa-solid fa-truck"></i>
                     <span>Proveedores</span>
                 </a>

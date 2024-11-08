@@ -34,12 +34,18 @@
                 <td class="text-center">{% if cliente.email %} {{ cliente.email }} {% else %} Sin email {% endif %}</td>
                 <td class="text-center">{{ cliente.fecha_registro|date:"d/m/Y" }}</td>
                 <td class="text-center">
-                    {% if cliente.fecha_ultima_compra %} {{ cliente.fecha_ultima_compra|date:"d/m/Y" }} {% else %} Sin
-                    fecha {% endif %}
+                    {% if cliente.fecha_ultima_compra %} 
+                        {{ cliente.fecha_ultima_compra|date:"d/m/Y" }} 
+                    {% else %} 
+                        Sin fecha 
+                    {% endif %}
                 </td>
                 <td class="text-center">
-                    {% if cliente.activo %} <span class="badge rounded-pill bg-success">Activo</span> {% else %} <span
-                        class="badge rounded-pill bg-danger">Inactivo</span> {% endif %}
+                    {% if cliente.activo %} 
+                        <span class="badge rounded-pill bg-success">Activo</span> 
+                    {% else %} <span
+                        class="badge rounded-pill bg-danger">Inactivo</span> 
+                    {% endif %}
                 </td>
                 <td class="text-center">
                     <div class="btn-group">

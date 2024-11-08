@@ -30,7 +30,13 @@
                 <td class="text-center">{{ empleado.get_sexo_display }}</td>
                 <td class="text-center">{{ empleado.puesto.nombre }}</td>
                 <td class="text-center">{{ empleado.departamento.nombre }}</td>
-                <td class="text-center">{{ empleado.activo }}</td>
+                <td class="text-center">
+                    {% if empleado.activo %}
+                        <span class="badge rounded-pill bg-success">Activo</span> 
+                    {% else %} <span
+                        class="badge rounded-pill bg-danger">Inactivo</span> 
+                    {% endif %}
+                </td>
                 <td class="text-center">
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#datosEmpleado{{ empleado.id }}">

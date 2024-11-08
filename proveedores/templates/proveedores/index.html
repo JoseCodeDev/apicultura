@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% block title %} Proveedores {% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-header d-flex justify-content-between">
+        <h1 class="mb-2 title">Proveedores</h1>
+
+        <a href="{% url 'proveedores_agregar' %}" class="btn btn-success">Agregar proveedor</a>
+    </div>
+
+    <table class="table table-striped dt-table">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Código</th>
+                <th class="text-center">Nombre de la empresa</th>
+                <th class="text-center">RFC</th>
+                <th class="text-center">Teléfono</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Activo</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in proveedoress %}
+            <tr>
+                <td class="text-center">{{ proveedor.id }}</td>
+                <td class="text-center">{{ proveedor.nombre_empresa }}</td>
+                <td class="text-center">{{ proveedor.rfc }}</td>
+                <td class="text-center">{{ proveedor.telefono_empresa }}</td>
+                <td class="text-center">{{ proveedor.email_empresa }}</td>
+                <td class="text-center">
+                    {% if proveedor.activo %}
+                        <span class="badge rounded-pill bg-success">Activo</span> 
+                    {% else %} <span
+                        class="badge rounded-pill bg-danger">Inactivo</span> 
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#datosProveedor{{ proveedor.id }}">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </button>
+                        <a href="{% url 'proveedores_editar' proveedor.id %}" class="btn btn-warning me-2 rounded">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                        <a href="{% url 'proveedores_eliminar' proveedor.id %}" class="btn btn-danger rounded" id="btnEliminar">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</div>
+
+{% for proveedor in proveedoress %}
+
+<div class="modal fade" id="datosProveedor{{ proveedor.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Datos del proveedor</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><strong>Código:</strong></td>
+                            <td>{{ proveedor.id }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nombre de la empresa:</strong></td>
+                            <td>{{ proveedor.nombre_empresa }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RFC:</strong></td>
+                            <td>{{ proveedor.rfc }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dirección fiscal:</strong></td>
+                            <td>{{ proveedor.direccion }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Teléfono de la empresa:</strong></td>
+                            <td>{{ proveedor.telefono_empresa }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email de la empresa:</strong></td>
+                            <td>{{ proveedor.email_empresa }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo de persona:</strong></td>
+                            <td>{{ proveedor.tipo_persona }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Banco de la empresa:</strong></td>
+                            <td>{{ proveedor.banco }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Número de cuenta de la empresa:</strong></td>
+                            <td>{{ proveedor.numero_cuenta }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nombre del representante:</strong></td>
+                            <td>{{ proveedor.representante_nombres }} {{ proveedor.representante_apellidos }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sexo del representante:</strong></td>
+                            <td>{{ proveedor.get_representante_sexo_display }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Teléfono del representante:</strong></td>
+                            <td>{{ proveedor.representante_telefono }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email del representante:</strong></td>
+                            <td>{{ proveedor.representante_email }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Activo:</strong></td>
+                            <td>{{ proveedor.activo|yesno:"Sí,No" }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

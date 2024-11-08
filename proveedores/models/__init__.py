@@ -1,1 +1,1 @@
-from .proveedores import Provedor
+from .proveedores import Proveedor
