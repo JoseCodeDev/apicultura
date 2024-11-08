@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Cambiar contraseña {% endblock %}
+
+{% block content %}
+<div class="main-content"></div>
+    <div class="main-header">
+        <h1 class="mb-2 title">Cambiar contraseña: {{ usuario.username }}</h1>
+
+        <p class="mt-4 mb-4">Campos obligatorios <span class="text-danger fw-bold">*</span></p> 
+    </div>
+
+    {{error}}
+    <form action="{% url 'usuarios_cambiar_contrasenia' usuario.id %}" method="post" id="frmCambiarContraseniaUsuario">
+        {% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                <label class="fw-bold" for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} <span class="text-danger">*</span>{% endif %}</label>
+                {{ field }}
+            </div>
+        {% endfor %}
+
+
+        <div class="mt-5">
+            <button class="btn btn-success" type="submit">Cambiar contraseña</button>
+            <a href="{% url 'usuarios_mostrar' %}" class="btn btn-danger">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

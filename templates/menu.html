@@ -58,7 +58,7 @@
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                     data-bs-target="#personal" aria-expanded="false" aria-controls="personal">
-                    <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-clipboard-user"></i>
                     <span>Personal</span>
                 </a>
                 <ul id="personal" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -86,6 +86,12 @@
                 <a href="{% url 'proveedores_mostrar' %}" class="sidebar-link">
                     <i class="fa-solid fa-truck"></i>
                     <span>Proveedores</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{% url 'usuarios_mostrar' %}" class="sidebar-link">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Usuarios</span>
                 </a>
             </li>
             <li class="sidebar-item">
