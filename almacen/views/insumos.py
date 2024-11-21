@@ -15,16 +15,15 @@ def agregar(request):
         try:
             form = InsumosForm(request.POST)
             if form.is_valid():
+                form.stock_actual = 0
                 form.save()
                 messages.success(request, 'El insumo se ha agregado exitosamente.')
                 return redirect('insumos_mostrar')
             else:
-                if 'categoria' in form.errors:
-                    messages.error(request, 'Selecciona una categoría válida.')
-                    return render(request, 'insumos/agregar.html', {'form': form})
-                else:
-                    messages.error(request, 'Datos no válidos del formulario.')
-                    return render(request, 'insumos/agregar.html', {'form': form})
+                for field, errors in form.errors.items(): 
+                    for error in errors: 
+                        messages.error(request, error) 
+                return render(request, 'insumos/agregar.html', {'form': form})
         except ValueError:
             messages.error(request, 'Ocurrió un error, inténtalo de nuevo más tarde.')
             return render(request, 'insumos/agregar.html', {'form': form})
@@ -41,13 +40,15 @@ def editar(request, id_insumo: int):
             insumo = get_object_or_404(Insumo, pk=id_insumo)
             form = InsumosForm(request.POST, instance=insumo)
             
-            if form.is_valid():
+            if form.is_valid(): 
                 form.save()
                 messages.success(request, 'El insumo se ha editado exitosamente.')
                 return redirect('insumos_mostrar')
             else: 
-                messages.error(request, 'Datos no válidos del formulario.')
-                return render(request, 'insumos/editar.html', {'insumo': insumo, 'form': form})
+                for field, errors in form.errors.items(): 
+                    for error in errors: 
+                        messages.error(request, error) 
+                return render(request, 'insumos/editar.html', {'insumo': insumo, 'form': form}) 
         except ValueError:
             messages.error(request, 'Ocurrió un error, inténtalo de nuevo más tarde.')
             return render(request, 'insumos/editar.html', {'insumo': insumo, 'form': form})

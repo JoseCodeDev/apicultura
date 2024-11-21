@@ -11,6 +11,7 @@ def mostrar(request):
     usuarios = User.objects.all()
     return render(request, 'index.html', {'usuarios': usuarios})
 
+
 # Agrega un nuevo usuario
 def agregar(request):
     if request.method == 'GET':
@@ -24,6 +25,7 @@ def agregar(request):
         else:
             messages.error(request, 'Datos no válidos del formulario.')
             return render(request, 'agregar.html', {'form': form})
+
 
 # Edita un usuario existente
 def editar(request, id_usuario):
