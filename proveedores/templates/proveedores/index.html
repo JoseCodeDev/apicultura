@@ -84,54 +84,54 @@
                             <td><strong>Dirección fiscal:</strong></td>
                             <td>{{ proveedor.direccion }}</td>
                         </tr>
-                        <tr>
-                            <td><strong>Teléfono de la empresa:</strong></td>
-                            <td>{{ proveedor.telefono_empresa }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Email de la empresa:</strong></td>
-                            <td>{{ proveedor.email_empresa }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tipo de persona:</strong></td>
-                            <td>{{ proveedor.tipo_persona }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Banco de la empresa:</strong></td>
-                            <td>{{ proveedor.banco }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Número de cuenta de la empresa:</strong></td>
-                            <td>{{ proveedor.numero_cuenta }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Nombre del representante:</strong></td>
-                            <td>{{ proveedor.representante_nombres }} {{ proveedor.representante_apellidos }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Sexo del representante:</strong></td>
-                            <td>{{ proveedor.get_representante_sexo_display }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Teléfono del representante:</strong></td>
-                            <td>{{ proveedor.representante_telefono }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Email del representante:</strong></td>
-                            <td>{{ proveedor.representante_email }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Activo:</strong></td>
-                            <td>{{ proveedor.activo|yesno:"Sí,No" }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
+                        <tr>
+                            <td><strong>Teléfono de la empresa:</strong></td>
+                            <td>{{ proveedor.telefono_empresa }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email de la empresa:</strong></td>
+                            <td>{{ proveedor.email_empresa }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo de persona:</strong></td>
+                            <td>{{ proveedor.tipo_persona }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Banco de la empresa:</strong></td>
+                            <td>{{ proveedor.banco }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Número de cuenta de la empresa:</strong></td>
+                            <td>{{ proveedor.numero_cuenta }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nombre del representante:</strong></td>
+                            <td>{{ proveedor.representante_nombres }} {{ proveedor.representante_apellidos }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sexo del representante:</strong></td>
+                            <td>{{ proveedor.get_representante_sexo_display }}</td>
+                            </tr>
+                        <tr>
+                            <td><strong>Teléfono del representante:</strong></td>
+                            <td>{{ proveedor.representante_telefono }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email del representante:</strong></td>
+                            <td>{{ proveedor.representante_email }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Activo:</strong></td>
+                            <td>{{ proveedor.activo|yesno:"Sí,No" }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endfor %}

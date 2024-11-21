@@ -57,6 +57,21 @@
             </li>
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                    data-bs-target="#pedidosCompras" aria-expanded="false" aria-controls="pedidosCompras">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                    <span>Pedidos y Compras</span>
+                </a>
+                <ul id="pedidosCompras" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a href="{% url 'pedidos_mostrar' %}" class="sidebar-link">
+                            <i class="fa-solid fa-tag"></i>
+                            <span>Pedidos</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-item">
+                <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                     data-bs-target="#personal" aria-expanded="false" aria-controls="personal">
                     <i class="fa-solid fa-clipboard-user"></i>
                     <span>Personal</span>

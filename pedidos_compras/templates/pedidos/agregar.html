@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %} Agregar producto{% endblock %}
+
+{% block content %}
+<div class="main-content"></div>
+    <div class="main-header">
+        <h1 class="mb-2 title">Agregar producto</h1>
+
+        <p class="mt-4 mb-4">Campos obligatorios <span class="text-danger fw-bold">*</span></p> 
+    </div>
+
+    <form action="{% url 'pedidos_agregar' %}" method="post" id="frmAgregarPedido">
+        {% csrf_token %}
+        {{ form }}
+        <table class="table" id="detalle-pedido-table">
+            <thead>
+                <tr>
+                    <th>Insumo</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="detalle-row">
+                    <td>
+                        <select class="form-control" name="insumo">
+                            {% for insumo in insumos %}
+                                <option value="{{ insumo.id }}">{{ insumo.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                        
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="cantidad">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" name="precio">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger remove-row">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="add-row">Agregar Insumo</button>
+        <button type="submit" class="btn btn-success">Guardar Pedido</button>
+        <a href="{% url 'pedidos_mostrar' %}" class="btn btn-danger">Volver</a>
+    </form>
+    
+    <script>
+        // Agregar una nueva fila
+        document.getElementById('add-row').addEventListener('click', function() {
+            var newRow = document.querySelector('.detalle-row').cloneNode(true);
+        
+            // Limpia los campos de la nueva fila
+            newRow.querySelectorAll('input, select').forEach(input => input.value = '');
+        
+            document.getElementById('detalle-pedido-table').querySelector('tbody').appendChild(newRow);
+        });
+        
+        // Usar delegación de eventos para eliminar filas dinámicamente
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-row')) {
+                const row = event.target.closest('tr');
+                if (row.parentNode.children.length > 1) { // Asegúrate de que quede al menos una fila
+                    row.remove();
+                } else {
+                    alert('Debe haber al menos una fila en la tabla.');
+                }
+            }
+        });
+        </script>        
+    
+</div>
+{% endblock %}

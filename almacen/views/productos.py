@@ -19,12 +19,10 @@ def agregar(request):
                 messages.success(request, 'El producto se ha agregado exitosamente.')
                 return redirect('productos_mostrar')
             else:
-                if 'categoria' in form.errors:
-                    messages.error(request, 'Selecciona una categoría válida.')
-                    return render(request, 'productos/agregar.html', {'form': form})
-                else:
-                    messages.error(request, 'Datos no válidos del formulario.')
-                    return render(request, 'productos/agregar.html', {'form': form})
+                for field, errors in form.errors.items(): 
+                    for error in errors: 
+                        messages.error(request, error) 
+                return render(request, 'productos/agregar.html', {'form': form}) 
         except ValueError:
             messages.error(request, 'Ocurrió un error, inténtalo de nuevo más tarde.')
             return render(request, 'productos/agregar.html', {'form': form})
@@ -46,8 +44,10 @@ def editar(request, id_producto: int):
                 messages.success(request, 'El producto se ha editado exitosamente.')
                 return redirect('productos_mostrar')
             else: 
-                messages.error(request, 'Datos no válidos del formulario.')
-                return render(request, 'productos/editar.html', {'producto': producto, 'form': form})
+                for field, errors in form.errors.items(): 
+                    for error in errors: 
+                        messages.error(request, error) 
+                return render(request, 'productos/editar.html', {'producto': producto, 'form': form}) 
         except ValueError:
             messages.error(request, 'Ocurrió un error, inténtalo de nuevo más tarde.')
             return render(request, 'productos/editar.html', {'producto': producto, 'form': form})

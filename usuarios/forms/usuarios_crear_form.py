@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from empleados.models import Empleado
 
 class UsuariosCrearForm(UserCreationForm):
     password1 = forms.CharField(
@@ -19,6 +20,12 @@ class UsuariosCrearForm(UserCreationForm):
             'maxlength': 128,
         })
     )
+    # empleado = forms.ModelChoiceField(
+    #     queryset=Empleado.objects.filter(usuario__isnull=True),  # Solo empleados sin usuario
+    #     required=False,
+    #     label="Empleado",
+    #     widget=forms.Select(attrs={'class': 'form-control mb-4'})
+    # )
 
     class Meta:
         model = User
@@ -65,4 +72,12 @@ class UsuariosCrearForm(UserCreationForm):
                 'id': 'isActiveUsuario',
             }),
         }
+        
+        def save(self, commit=True):
+            user = super().save(commit=commit)
+            empleado = self.cleaned_data.get('empleado')
+            if empleado:
+                empleado.usuario = user
+                empleado.save()
+            return user
     

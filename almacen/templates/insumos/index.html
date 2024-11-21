@@ -13,11 +13,12 @@
     <table class="table table-striped dt-table">
         <thead class="table-dark">
             <tr>
-                <th class="text-center">Código</th>
+                <th class="text-center">SKU</th>
                 <th class="text-center">Nombre</th>
                 <th class="text-center">Descripción</th>
-                <th class="text-center">Precio de compra</th>
-                <th class="text-center">Stock</th>
+                <th class="text-center">Precio promedio</th>
+                <th class="text-center">Stock mínimo</th>
+                <th class="text-center">Stock actual</th>
                 <th class="text-center">Categoría</th>
                 <th class="text-center">Acciones</th>
             </tr>
@@ -25,11 +26,12 @@
         <tbody>
             {% for insumo in insumos %}
             <tr>
-                <td class="text-center">{{ insumo.id }}</td>
+                <td class="text-center">{{ insumo.sku }}</td>
                 <td class="text-center">{{ insumo.nombre }}</td>
                 <td class="text-center">{{ insumo.descripcion }}</td>
                 <td class="text-center">Compra</td>
-                <td class="text-center">{{ insumo.stock }}</td>
+                <td class="text-center">{{ insumo.stock_minimo }}</td>
+                <td class="text-center">{{ insumo.stock_actual }}</td>
                 <td class="text-center">{{ insumo.categoria.nombre }}</td>
                 <td class="text-center">
                     <div class="btn-group">
